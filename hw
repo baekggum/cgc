@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <conio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -80,7 +79,8 @@ void add_User(User* user, FILE* fp) {
 	char ch = ' ';
 	do {
 		printf("이름 : ");
-		getchar();
+		scanf("%c", ch);	//입력버퍼 비우기용
+		ch = ' ';		
 		fgets(user[g_count].name, sizeof(user[g_count].name), stdin);
 		user[g_count].name[strlen(user[g_count].name) - 1] = '\0';
 		printf("나이 : ");
@@ -101,8 +101,7 @@ void add_User(User* user, FILE* fp) {
 void edit_User(User* user, FILE* fp, int _count) {
 	char ch = ' ';
 	printf("이름 : ");
-	getchar();
-	scanf("%[^\n]s", user[_count].name);
+	scanf(" %[^\n]s", user[_count].name);
 	printf("나이 : ");
 	scanf(" %d", &user[_count].age);
 	while (1) {
