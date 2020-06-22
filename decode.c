@@ -48,221 +48,123 @@ void is_Right(Description* des, FILE* fp, int i) {
   ptr = strtok(ptr, "\n");
   strcpy(data3, ptr);
   ptr = strtok(NULL, " ");
-  if ((strcmp(data,"/1")==0)||(strcmp(data2,"/1")==0)||(strcmp(data3,"/1")==0))
+  if ((strcmp(data, "/1") == 0) || (strcmp(data2, "/1") == 0) || (strcmp(data3, "/1") == 0))
     g_n = 1;
-  else if ((strcmp(data,"/2")==0)||(strcmp(data2,"/2")==0)||(strcmp(data3,"/2")==0))
+  else if ((strcmp(data, "/2") == 0) || (strcmp(data2, "/2") == 0) || (strcmp(data3, "/2") == 0))
     g_n = 2;
-  else if ((strcmp(data,"/3")==0)||(strcmp(data2,"/3")==0)||(strcmp(data3,"/3")==0))
+  else if ((strcmp(data, "/3") == 0) || (strcmp(data2, "/3") == 0) || (strcmp(data3, "/3") == 0))
     g_n = 3;
-  else if ((strcmp(data,"/4")==0)||(strcmp(data2,"/4")==0)||(strcmp(data3,"/4")==0))
+  else if ((strcmp(data, "/4") == 0) || (strcmp(data2, "/4") == 0) || (strcmp(data3, "/4") == 0))
     g_n = 4;
-  int n1 = strlen(data);
-  int n2 = strlen(data2);
-  int n3 = strlen(data3);
-  if (n1 == n2) {
-    if (n1 == n3) {
-      if (strcmp(data, data2) == 0) {
-        if (strcmp(data, data3) == 0) {
-          strcpy(des[i].data, data);
-          return;
-        }
-        else {
-          for (int p = 0; p < strlen(data); p++) {
-            if (*(data + p) != *(data3 + p)) {
-              printf("%c %c\n", *(data3 + p), *(data + p));
-              strcpy(des[i].data, data);
-              continue;
-            }
-          }
-          switch (g_n) {
-            case 1:
-              printf("*USER STATUS*\n");
-              break;
-            case 2:
-              printf("*ITEMS*\n");
-              break;
-            case 3:
-              printf("*FRIENDS LIST*\n");
-              break;
-            case 4:
-              printf("*DESCRIPTION*\n");
-              break;
-          }
-        }
-      }
-      else {
-        if (strcmp(data, data3) == 0) {
-          for (int p = 0; p < strlen(data); p++) {
-            if (*(data + p) != *(data2 + p)) {
-              printf("%c %c\n", *(data2 + p), *(data + p));
-              strcpy(des[i].data, data);
-              continue;
-            }
-          }
-          switch (g_n) {
-            case 1:
-              printf("*USER STATUS*\n");
-              break;
-            case 2:
-              printf("*ITEMS*\n");
-              break;
-            case 3:
-              printf("*FRIENDS LIST*\n");
-              break;
-            case 4:
-              printf("*DESCRIPTION*\n");
-              break;
-          }
-        }
-        if (strcmp(data2, data3) == 0) {
-          for (int p = 0; p < strlen(data2); p++) {
-            if (*(data + p) != *(data2 + p)) {
-              printf("%c %c\n", *(data + p), *(data2 + p));
-              strcpy(des[i].data, data2);
-              continue;
-            }
-          }
-          switch (g_n) {
-            case 1:
-              printf("*USER STATUS*\n");
-              break;
-            case 2:
-              printf("*ITEMS*\n");
-              break;
-            case 3:
-              printf("*FRIENDS LIST*\n");
-              break;
-            case 4:
-              printf("*DESCRIPTION*\n");
-              break;
-          }
-        }
-      }
+  int n = strlen(data);
+  if (strcmp(data, data2) == 0) {
+    if (strcmp(data, data3) == 0) {
+      strcpy(des[i].data, data);
       return;
     }
     else {
-      if (data[0] == data3[0]) {
-        printf("%c :\n", data3[n3 - 1]);
-        data3[n3 - 1] = '\0';
-        switch (g_n) {
-          case 1:
-            printf("*USER STATUS*\n");
-            break;
-          case 2:
-            printf("*ITEMS*\n");
-            break;
-          case 3:
-            printf("*FRIENDS LIST*\n");
-            break;
-          case 4:
-            printf("*DESCRIPTION*\n");
-            break;
+      for (int p = 0; p < strlen(data); p++) {
+        if (*(data + p) != *(data3 + p)) {
+          printf("%c %c\n", *(data3 + p), *(data + p));
+          strcpy(des[i].data, data);
+          continue;
         }
       }
-      else {
-        printf("%c :\n", *data3);
-        data3[0] = '\0';
-        for (int i = 0; i < strlen(data3) - 1; i++)
-          data3[i] = data3[i + 1];
-        data3[strlen(data3) - 1] = '\0';
-        switch (g_n) {
-          case 1:
-            printf("*USER STATUS*\n");
-            break;
-          case 2:
-            printf("*ITEMS*\n");
-            break;
-          case 3:
-            printf("*FRIENDS LIST*\n");
-            break;
-          case 4:
-            printf("*DESCRIPTION*\n");
-            break;
-        }
+      switch (g_n) {
+        case 1:
+          printf("*USER STATUS*\n");
+          break;
+        case 2:
+          printf("*ITEMS*\n");
+          break;
+        case 3:
+          printf("*FRIENDS LIST*\n");
+          break;
+        case 4:
+          printf("*DESCRIPTION*\n");
+          break;
       }
     }
   }
   else {
-    if (n1 == n3) {
-      if (data2[0] == data3[0]) {
-        printf("%c :\n", data2[n2 - 1]);
-        data2[n2 - 1] = '\0';
-        switch (g_n) {
-          case 1:
-            printf("*USER STATUS*\n");
-            break;
-          case 2:
-            printf("*ITEMS*\n");
-            break;
-          case 3:
-            printf("*FRIENDS LIST*\n");
-            break;
-          case 4:
-            printf("*DESCRIPTION*\n");
-            break;
+    if (strcmp(data, data3) == 0) {
+      for (int p = 0; p < strlen(data); p++) {
+        if (*(data + p) != *(data2 + p)) {
+          printf("%c %c\n", *(data2 + p), *(data + p));
+          strcpy(des[i].data, data);
+          continue;
         }
       }
-      else {
-        printf("%c :\n", *data2);
-        data2[0] = '\0';
-        for (int i = 0; i < strlen(data2) - 1; i++)
-          data2[i] = data2[i + 1];
-        data2[strlen(data2) - 1] = '\0';
-        switch (g_n) {
-          case 1:
-            printf("*USER STATUS*\n");
-            break;
-          case 2:
-            printf("*ITEMS*\n");
-            break;
-          case 3:
-            printf("*FRIENDS LIST*\n");
-            break;
-          case 4:
-            printf("*DESCRIPTION*\n");
-            break;
-        }
+      switch (g_n) {
+        case 1:
+          printf("*USER STATUS*\n");
+          break;
+        case 2:
+          printf("*ITEMS*\n");
+          break;
+        case 3:
+          printf("*FRIENDS LIST*\n");
+          break;
+        case 4:
+          printf("*DESCRIPTION*\n");
+          break;
       }
     }
-    if (n2 == n3) {
-      if (data[0] == data3[0]) {
-        printf("%c :\n", data[n1 - 1]);
-        data[n1 - 1] = '\0';
-        switch (g_n) {
-          case 1:
-            printf("*USER STATUS*\n");
-            break;
-          case 2:
-            printf("*ITEMS*\n");
-            break;
-          case 3:
-            printf("*FRIENDS LIST*\n");
-            break;
-          case 4:
-            printf("*DESCRIPTION*\n");
-            break;
+    else if (strcmp(data2, data3) == 0) {
+      for (int p = 0; p < strlen(data2); p++) {
+        if (*(data + p) != *(data2 + p)) {
+          printf("%c %c\n", *(data + p), *(data2 + p));
+          strcpy(des[i].data, data2);
+          continue;
         }
       }
-      else {
-        printf("%c :\n", *data);
-        data[0] = '\0';
-        for (int i = 0; i < strlen(data) - 1; i++)
-          data[i] = data[i + 1];
-        data[strlen(data) - 1] = '\0';
-        switch (g_n) {
-          case 1:
-            printf("*USER STATUS*\n");
-            break;
-          case 2:
-            printf("*ITEMS*\n");
-            break;
-          case 3:
-            printf("*FRIENDS LIST*\n");
-            break;
-          case 4:
-            printf("*DESCRIPTION*\n");
-            break;
+      switch (g_n) {
+        case 1:
+          printf("*USER STATUS*\n");
+          break;
+        case 2:
+          printf("*ITEMS*\n");
+          break;
+        case 3:
+          printf("*FRIENDS LIST*\n");
+          break;
+        case 4:
+          printf("*DESCRIPTION*\n");
+          break;
+      }
+    }
+    else {
+      for (int i = 0; i < n; i++) {
+        if (*(data + i) == *(data2 + i)) {
+          if (*(data2 + i) == *(data3 + i))
+            continue;
+          printf("%c %c\n", *(data3 + i), *(data + i));
+          *(data3 + i) = *(data + i);
         }
+        else {
+          if (*(data + i) == *(data3 + i)) {
+            printf("%c %c\n", *(data2 + i), *(data + i));
+            *(data2 + i) = *(data + i);
+          }
+          else {
+            printf("%c %c\n", *(data + i), *(data2 + i));
+            *(data + i) = *(data2 + i);
+          }
+        }
+      }
+      switch (g_n) {
+        case 1:
+          printf("*USER STATUS*\n");
+          break;
+        case 2:
+          printf("*ITEMS*\n");
+          break;
+        case 3:
+          printf("*FRIENDS LIST*\n");
+          break;
+        case 4:
+          printf("*DESCRIPTION*\n");
+          break;
       }
     }
   }
